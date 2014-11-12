@@ -85,6 +85,9 @@ This will return an object with the following properties:
 
 == Changelog ==
 
+= 1.0.5 =
+* Fixed a bug that was causing resource list to break on some PHP setups
+
 = 1.0.4 =
 * Added an option to use self-hosted (commercial) amCharts libraries with embedded Live Editor charts
 

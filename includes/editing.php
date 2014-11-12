@@ -58,8 +58,8 @@ function amcharts_resources_box ( $post ) {
 	$settings = get_option( 'amcharts_options', amcharts_get_defaults() );
 	
 	// get libs
-	$libs = preg_split( '/\R/', $settings['resources'] );
-	$libs = array_merge( $libs, preg_split( '/\R/', $settings['custom_resources'] ) );
+	$libs = amcharts_split_libs( $settings['resources'] );
+	$libs = array_merge( $libs, amcharts_split_libs( $settings['custom_resources'] ) );
 	
 	// new?
 	if ( amcharts_is_new_post() && $_GET['chart_type'] ) {
