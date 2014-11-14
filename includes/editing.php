@@ -218,7 +218,7 @@ function amcharts_misc_box ( $post ) {
 add_action( 'save_post', 'amcharts_save_post', 70 );
 function amcharts_save_post ( $post_id ) {
 	// checks
-	if ( !in_array( $_POST['post_type'], array( 'amchart' ) ) ) return;
+	if ( !isset( $_POST['post_type'] ) || !in_array( $_POST['post_type'], array( 'amchart' ) ) ) return;
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
 	if ( !wp_verify_nonce( $_POST['amcharts_nonce'], AMCHARTS_NONCE ) ) return;
 	if ( !current_user_can( 'edit_page', $post_id ) && !current_user_can( 'edit_post', $post_id ) ) return;
