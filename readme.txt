@@ -2,8 +2,8 @@
 Contributors: martynasma
 Tags: charts, maps, amcharts, ammap, javascript charts, javascript maps
 Requires at least: 3.0
-Tested up to: 4.1
-Stable tag: 1.0.6
+Tested up to: 4.1.1
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -73,6 +73,27 @@ This will return an object with the following properties:
 *   html - HTML code
 *   javascript - JavaScript code
 
+= Can I pass custom parameters to chart code via shortcode? =
+
+Yes, starting from version 1.0.7.
+
+Any parameter prefixed with "data-" will be passed into chart code via global AmCharts.wpChartData object.
+
+I.e.:
+
+`[amcharts id="pie-1" data-file="data1.csv" data-sort="asc"]`
+
+The above shortcode will insert the following code **before** actual chart code:
+
+`AmCharts.wpChartData = {
+  "file": "data1.csv",
+  "sort": "asc"
+}`
+
+You can then reference those passed variables in your chart code. I.e.:
+
+`alert( AmCharts.wpChartData.file );`
+
 == Screenshots ==
 
 1. Plugin configuration. Either use amCharts-hosted free libraries or your own. Set default code per chart/map type.
@@ -84,6 +105,10 @@ This will return an object with the following properties:
 7. The chart shortcodes are replaced with the actual charts when page renders.
 
 == Changelog ==
+
+= 1.0.7 =
+* Added an option to wrap all chart/map code into exception try/catch block
+* Added ability to pass in custom parameters via shortcode
 
 = 1.0.6 =
 * Fixed a warning that was being displayed if Wordpress debug mode was enabled
